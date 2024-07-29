@@ -1,0 +1,660 @@
+<%- include("../includes/head.ejs"); %>
+
+<link rel="stylesheet" href="/style.css">
+
+<body class="bg-black text-white">
+  <style type="text/css">
+    @charset "UTF-8";
+    @charset "iso-8859-15";
+
+    .btn {
+      display: inline-block;
+      position: relative;
+      text-decoration: none;
+      padding: 10px 20px;
+      // background-color: #e9eaec;
+      // color: #000;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .btn:hover {
+      transform: translateY(-10px);
+    }
+
+    .pgt {
+      background: black;
+      color: white;
+      border: 1px solid white;
+      text-decoration: none;
+      border-radius: 25px;
+    }
+
+    .reactive {
+      background: white;
+      color: black;
+    }
+
+    #secondPagination {
+      display: none;
+    }
+
+    .pgt2 {
+      background: black;
+      color: white;
+      border: 1px solid white;
+      text-decoration: none;
+      border-radius: 25px;
+      font-weight: bold;
+    }
+
+    .iactive {
+      background: white;
+      color: black;
+    }
+
+    .cardDetailBox {
+      margin-right: 10px;
+      transition: transform 0.3s ease-in-out; /* Set a smooth transition for the transform property */
+      // transform: scale(1.05);
+    }
+
+    .cardDetailBox:hover {
+      transform: scale(1.05); /* Apply a zoom-in effect on hover */
+    }
+    
+    .cdbox1 {
+      width: 270px;
+      margin-top: 40px;
+      height: 400px;
+    }
+    
+    .card-title {
+      font-size: 16px !important;
+      padding: 0px !important;
+    }
+    
+    .card-img-top {
+      height: 200px;
+    }
+    
+    #catCont {
+      margin-top: 60px;
+    }
+    
+    #catDiv1 {
+      display: flex;
+      justify-content: center;
+    }
+    
+    .catId1 {
+      padding: 0 20px;
+      margin-right: 30px;
+    }
+    
+    .catId2 {
+      padding: 0 20px;
+    }
+    
+    .tag {
+        position: absolute;
+        top: 4px;
+        left: 3px;
+        padding: 5px 10px; 
+        background-color: #4300C9; 
+        color: white; 
+        border-radius: 10px;
+        font-size: 12px;        
+      }
+    
+      .tagO {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        padding: 5px 10px; 
+        background-color: #DB5615;
+        color: white;
+        border-radius: 10px;
+        font-size: 12px;
+      }
+    
+      .tab-btn {
+        font-size: 15px;
+      }
+    
+    .tagL {
+      position: absolute;
+      top: 4px;
+      left: 4px;
+      background-color: blue;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+    }
+
+    @media (max-width: 994px) {
+      #firstPagination {
+        display: none;
+      }
+      #secondPagination {
+        display: block;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .cdbox1 {
+        width: 220px;
+        margin-top: 20px;
+      }
+      .card-title {
+        font-size: 16px !important;
+        padding: 0px !important;
+      }
+      .card-img-top {
+        height: 150px;
+      }
+      .card-title {
+        font-size: 12px !important;
+        padding: 0px !important;
+        // margin: 0px !important;
+      }
+      .tag {
+        position: absolute;
+        top: 4px;
+        left: 3px;
+      }
+      .tagO {
+        position: absolute;
+        top: 4px;
+        left: 4px;
+        background-color: #DB5615;
+      }
+    }
+
+    @media (max-width: 500px) {
+      #firstPagination {
+        display: none;
+      }
+      #secondPagination {
+        display: block;
+      }
+      #cardCont1 {
+        margin-left: 10px;
+      }
+      #catCont {
+        margin-top: 20px;
+      }
+      #catDiv1 {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        font-size: 12px;
+      }
+      .catId1 {
+        padding: 2% 5%;
+        margin-bottom: 20px;
+      }
+
+      .catId2 {
+        padding: 2% 5%;
+      }
+      
+      .itemsLength {
+        font-size: 13px;
+      }
+      
+      .card {
+        padding: 0px !important;
+      }
+      .card-title {
+        font-size: 12px !important;
+        padding: 0px !important;
+        // margin: 0px !important;
+      }
+      .card-img-top {
+        height: 130px;
+      }
+      .ctBox {
+        padding-left: 0px;
+        padding-right: 0px;
+      }
+      .cardDetailBox {
+        margin-right: 1px;
+      }
+      .tag {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 6px;
+      }
+      .tagO {
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        font-size: 6px;
+      }
+      .cdbox1 {
+        margin-top: 10px;
+        margin-bottom: 20px;
+      }
+    }
+    
+    @media (max-width: 430px) {
+      .cdbox1 {
+        width: 203px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .card-title {
+        font-size: 18px !important;
+        padding: 0px !important;
+      }
+      .card-img-top {
+        height: 180px !important;
+      }
+    }
+    
+    @media (max-width: 425px) {
+      .cdbox1 {
+        width: 200px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+    }
+    
+    @media (max-width: 414px) {
+      .cdbox1 {
+        width: 195px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .card-img-top {
+        height: 180px !important;
+      }
+      .card-title {
+        font-size: 18px !important;
+      }
+    }
+    
+    @media (max-width: 412px) {
+      .cdbox1 {
+        width: 193px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+    }
+    
+    @media (max-width: 390px) {
+      .cdbox1 {
+        width: 183px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+        padding-top: 5px;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+    }
+    
+    @media (max-width: 375px) {
+      .cdbox1 {
+        width: 175px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+    }
+    
+    @media (max-width: 360px) {
+      .cdbox1 {
+        width: 168px;
+        height: 380px;
+      }
+      .ctBox {
+        padding-left: 7px;
+        padding-right: 5px;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+    }
+    
+    @media (max-width: 325px) {
+      .cdbox1 {
+        width: 148px;
+        height: 380px;
+      }
+      .tagO {
+        font-size: 10px !important;
+      }
+      .card-title {
+        font-size: 16px !important;
+      }
+      .card-img-top {
+        height: 130px !important;
+      }
+    }
+  </style>
+
+  <header class="header1">
+    <%- include('../includes/navbar.ejs') %>
+  </header>
+
+  <header class="header-to-hide" style="position: sticky; top: 0; background-color: black; z-index: 1000;">
+    <%- include('../includes/navbar2.ejs') %>
+  </header>
+
+  <div class="loading-spinner" id="loadingSpinner">
+    <img src="/h4kigImg.jpg" alt="Your Logo" class="logoSp">
+    <div class="spinner"></div>
+  </div>
+
+  <section>
+    <div class="container-fluid bg-light p-2">
+      <div class="row">
+        <div class="col-12">
+          <nav class="nav">
+            <a class="nav-link active" aria-current="page" href="/" style="color: black;"><%= lang.cart_txt14 %></a>
+            <a class="nav-link" href="/v1/product_categories/?category=all&name=" style="color: black;"><%= lang.cat_txt1 %></a>
+            <a class="nav-link" href="/v1/product_categories/?category=<%= category %>&name=<%= name %>" style="color: grey;">
+              <% if(category && category !== 'all') { %>
+                <%= category %>
+              <% } else { %>
+                <%= name %>
+              <% } %>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container" id="catCont">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-6">
+          <p class="itemsLength"><%= lang.cat_txt2 %> <%= products.length %> <%= lang.cat_txt3 %></p>
+        </div>
+      </div>
+  </section>
+
+  <section>
+    <div class="container" style="margin-top: 30px;" id="cardCont1">
+      <div class="row">
+        <% if(products.length >= 1) { %>
+          <% for(let i = 0; i < products.length; i++) { %>
+            <div class="cdbox1">
+              <div class="card bg-black text-white p-2 border cardDetailBox">
+                <% if (products[i].label !== '') { %>
+                  <% if (products[i].label === 'Nouveau') { %>
+                    <div class="tag text-uppercase" style=""><%= products[i].label %></div>
+                  <% } %>
+                  <% if (products[i].label === 'Populaire?') { %>
+                    <div class="tag tagO text-uppercase" style=""><%= products[i].label %>🔥</div>
+                  <% } %>
+                  <% if (products[i].label === 'so') { %>
+                    <div class="tag tagL text-uppercase" style=""><%= products[i].label %></div>
+                  <% } %>
+                <% } %>
+                <a href="<% if(products[i].pName == 'Netflix UHD' || products[i].pName == 'Disney+') { %>/v1/details/<%= products[i].pName %><% } else { %>/v1/details/<%= products[i].pName %><% } %>" class="text-white" style="text-decoration: none;">
+                  <% if(products[i].image !== null) { %>
+                    <% if (products[i].image.includes("h4kig.cc")) { %>
+                      <img src="<%= products[i].image %>" class="card-img-top" alt="..." width="300" height="300">
+                    <% } else { %>
+                      <img src="https://h4kig.com/storage/<%= products[i].image %>" class="card-img-top" alt="..." width="300" height="300">
+                    <% } %>
+                  <% } else { %>
+                      <img src="" class="card-img-top" alt="..." width="300" height="300">
+                  <% } %>
+                  <div class="card-body">
+                    <h5 class="card-title text-uppercase mb-3" style="font-size: 16px;">
+                        <% if (lang.smws.lang == 'en' && products[i].category == 'Comptes' ) { %>
+                              <%= lang.l_table_1_1 %>
+                            <% } else if (lang.smws.lang == 'en' && products[i].category == 'Formations') { %>
+                              <%= lang.l_table_1_2 %>
+                            <% } else if (lang.smws.lang == 'en' && products[i].category == 'Services') { %>
+                              <%= lang.l_table_1_3 %>
+                            <% } else { %>
+                              <%= products[i].category %>
+                        <% } %>
+                    </h5>
+                    <h5 class="card-title text-uppercase" style="font-size: 16px;"><%= products[i].pName %></h5>
+                    <div class="ctBox d-flex justify-content-between align-items-center mt-3" style="border-top: 2px solid white">
+                      <h5 class="card-title fw-bold" style="font-size: 22px; cursor: none;"><%= products[i].price %>€</h5>
+                      <a href="<% if(products[i].pName == 'Netflix UHD' || products[i].pName == 'Disney+') { %>https://h4kigstream.online/<% } else { %>/v1/details/<%= products[i].pName %><% } %>" class="btn border-0">
+                        <i class="fa-solid fa-circle-info" style="color: #e9eaec;"></i>
+                      </a>
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container mt-5" id="firstPagination">
+      <div class="row justify-content-center">
+        <% if (pageCount >= 1) { %>
+          <div class="col-xxl mt-3 d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                <li class="page-item">
+                  <a class="page-link" aria-label="Previous" style="color: black; font-weight: bold;">
+                    <span aria-hidden="true">&laquo;</span>
+                  </a>
+                </li>
+                <% for (let i = 1; i <= pageCount; i++) { %>
+                    <li class="page-item" style="margin: 0 10px 0;">
+                      <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=<%= i %>&type=<%= type %>" class="page-link pgt <%= currentPage === i ? 'reactive' : '' %>">
+                          <%= i %>
+                      </a>
+                    </li>
+                <% } %>
+                <li class="page-item">
+                  <a class="page-link" aria-label="Next" style="color: black; font-weight: bold;">
+                    <span aria-hidden="true">&raquo;</span>
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        <% } %>
+      </div>
+    </div>
+
+    <div class="container mt-5" id="secondPagination">
+      <div class="row">
+        <% if (pageCount >= 1) { %>
+          <div class="col-xxl mt-3 d-flex justify-content-center">
+            <nav aria-label="Page navigation example">
+              <ul class="pagination justify-content-center">
+                <li class="page-item">
+                  <a href="#" class="page-link" aria-label="Previous" style="color: black; font-weight: bold;" id="prevPageLink">
+                    &lt;
+                  </a>
+                </li>
+                <% if (pageCount >= 3) { %>
+                  <li class="page-item ms-2 me-2">
+                    <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=1&type=<%= type %>" class="page-link pgt2 iactive" aria-label="Page 1">
+                      1
+                    </a>
+                  </li>
+                  <li class="page-item me-2">
+                    <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=2&type=<%= type %>" class="page-link pgt2" aria-label="Page 2">
+                      2
+                    </a>
+                  </li>
+                  <li class="page-item me-2">
+                    <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=3&type=<%= type %>" class="page-link pgt2" aria-label="Page 3">
+                      3
+                    </a>
+                  </li>
+                <% } else { %>
+                  <li class="page-item ms-2 me-2">
+                    <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=1&type=<%= type %>" class="page-link pgt2 iactive" aria-label="Page 1">
+                      1
+                    </a>
+                  </li>
+                  <li class="page-item me-2">
+                    <a href="/v1/product_categories/?category=<%= category %>&name=<%= name %>&page=2&type=<%= type %>" class="page-link pgt2" aria-label="Page 2">
+                      2
+                    </a>
+                  </li>
+                <% } %>
+                <!-- Add more page numbers as needed -->
+                <li class="page-item">
+                  <a href="#" class="page-link" aria-label="Next" style="color: black; font-weight: bold;" id="nextPageLink">
+                    &gt;
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container-fluid">
+      <div class="position-relative">
+        <div class="position-fixed bottom-0 start-0" id="button-container">
+          <form action="/v1/language" method="post">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+              <button class="en-button" type="submit" name="lang" value="en">
+                <div class="button-content" id="enBtn">
+                  <img src="/usFlag.png" width="13" height="13" />
+                  English
+                </div>
+              </button>
+              <button class="ru-button" type="submit" name="lang" value="fr">
+                <div class="button-content" id="frBtn">
+                  <img src="/frFlag.png" width="13" height="13" />
+                  Français
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <%- include('../includes/newsletter.ejs') %>
+  </section>
+
+  <section>
+    <%- include('../includes/table.ejs') %>
+  </section>
+
+  <section>
+    <%- include('../includes/footer.ejs') %>
+  </section>
+
+  <script>
+    const lang = '<%= JSON.stringify(lang) %>';
+    const cp = '<%- currentPage %>'; 
+    const cat = '<%- category %>';
+    const n1 = '<%- name %>';
+    const p1 = '<%- pageCount %>';
+    const t1 = '<%- type %>';
+  </script>
+
+  <script src="/script.js"></script>
+
+  <script type="text/javascript">
+    globalThis.document.addEventListener('DOMContentLoaded', () => {
+      let currentPage = cp;
+      let category = cat;
+      let n2 = n1;
+      let p2 = p1;
+      let t2 = t1;
+
+      const nextPageLink = document.getElementById("nextPageLink");
+      const prevPageLink = document.getElementById("prevPageLink");
+
+      const pageLink = document.querySelectorAll("#secondPagination .page-link");
+
+      // console.log(category, n2, t2, currentPage);
+
+      pageLink.forEach(i => {
+        // console.log(i.textContent, i.classList);
+        i.classList.remove('iactive');
+        if (Number(i.textContent) == Number(currentPage)) {
+          // console.log(i.classList);
+          i.classList.add('iactive');
+        }
+      })
+
+      if(p2 >= 1) {
+        nextPageLink.addEventListener("click", (e) => {
+          currentPage++; // Increment the page number
+          e.target.setAttribute("href", `/v1/product_categories/?category=${category}&name=${n2}&page=${currentPage}&type=${t2}`);
+        });
+
+        prevPageLink.addEventListener("click", (e) => {
+          if (currentPage == 1) {
+            // console.log("prev...");
+            return;
+          }
+          else {
+            currentPage--;
+            e.target.setAttribute("href", `/v1/product_categories/?category=${category}&name=${n2}&page=${currentPage}&type=${t2}`);
+          }
+        });
+      }
+    });
+  </script>
+
+  <%- include("../includes/end.ejs"); %>
+</body>
